@@ -265,9 +265,6 @@ def parse_input_file(filename):
         sys.exit(1)
     except Exception as e:
         print(f"Ocurrio un error leyendo el documento: {e}")
-        # Depending on the error, may want to exit or return partial list
-        # sys.exit(1)
-
     return mazes
 
 
@@ -520,7 +517,7 @@ def main(filename):
                         if name == "play":
                             is_playing = True
                             status_message = "Ejecutando..."
-                            last_step_time = current_time # 
+                            last_step_time = current_time 
                         elif name == "pause":
                             is_playing = False
                             status_message = "Pausado, aprete Play or Next."
@@ -577,7 +574,6 @@ def main(filename):
     sys.exit()
 
 
-# --- Text Output for Console (as required by PDF) ---
 def run_solvers_for_console_output(filename):
      print("-" * 30)
      print("Laberintos:")
@@ -590,12 +586,10 @@ def run_solvers_for_console_output(filename):
      for i, maze in enumerate(mazes):
          print(f"\n--- Resolviendo laberinto {i+1} ({maze.m}x{maze.n}) ---")
 
-         # Run DFS (Not necessarily shortest path)
          dfs_solver = DFSSolver(maze)
-         dfs_solver.run_all() # Run to completion
+         dfs_solver.run_all() 
          if dfs_solver.solution_path:
              print(f"DFS: Camino encontrado en {len(dfs_solver.solution_path) - 1} movimientos.")
-             # Note: DFS doesn't guarantee shortest path.
          else:
              print(f"DFS: No se encontro solución.")
 
